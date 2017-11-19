@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script
+                       src="https://code.jquery.com/jquery-1.11.1.min.js"
+                       integrity="sha256-VAvG3sHdS5LqTT+5A/aeq/bZGa/Uj04xKxY8KM/w9EE="
+                       crossorigin="anonymous"></script>
+    <script src="js/ss-utils.js"></script>
+</head>
+<body>
+<script>
+    // create random user id
+    var epoch = (new Date).getTime();
+    var source = new EventSource(
+        '/event-stream?channel=hash&t=' + epoch);
+    source.addEventListener('error', function (e) {
+        console.log("ERROR!", e);
+    }, false);
+
+    $(source).handleServerEvents({
+        handlers: {     
+            onMessage: function (msg, e) { // fired after every message
+                console.log('onMessage:' + msg);
+            },
+            hash: function (msg, e) { // fired after every message
+                console.log('hash:' + msg);
+            },
+            hashResponse: function (msg, e) { // fired after every message
+                console.log('hashResponse:' + msg);
+            }
+        }
+    });
+
+
+    $.get('api/md5?url=http://www.cnn.com&subscriber=1234', function( data ) {
+        console.log( "Data Loaded: " + data );
+    });
+    
+</script>
+</body>
+</html>
