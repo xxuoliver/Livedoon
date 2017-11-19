@@ -18,3 +18,7 @@ The server is hosted at: http://localhost:5000/
 # Tests
 
 The test is currently missing, but I did some general edge test e.g. invalid hostname, etc.
+
+# CI intergation
+
+It is possible ti intergate the project to a CI. I am open to discuss this oppounity, as it was not required in the specification.
