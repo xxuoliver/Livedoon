@@ -15,5 +15,6 @@ src/Configurations/RabbitConfig.cs
 
 The server is hosted at: http://localhost:5000/
 
-#Tests
+# Tests
+
 The test is currently missing, but I did some general edge test e.g. invalid hostname, etc.
